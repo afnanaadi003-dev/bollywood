@@ -1,1 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bollywood University — The Haven of Dreamers</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts & Phosphor Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+            display: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            havenPink: {
+              50: '#fdf2f8',
+              100: '#fce7f3',
+              300: '#f472b6',
+              500: '#ec4899',
+              700: '#be185d',
+              900: '#831843',
+            },
+            goldAccent: {
+              300: '#fde047',
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04',
+            },
+            emeraldMuted: {
+              400: '#34d399',
+              600: '#059669',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 20s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar & Aesthetics */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(236, 72, 153, 0.4);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(236, 72, 153, 0.8);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .glass-card-light {
+      background: rgba(255, 241, 248, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
+
+    .glow-pink {
+      box-shadow: 0 0 35px -5px rgba(236, 72, 153, 0.3);
+    }
+
+    .glow-gold {
+      box-shadow: 0 0 35px -5px rgba(234, 179, 8, 0.3);
+    }
+
+    /* Custom Themes */
+    body.theme-pink {
+      background-color: #0f0714;
+      color: #fce7f3;
+    }
+    body.theme-night {
+      background-color: #050b14;
+      color: #e2e8f0;
+    }
+    body.theme-golden {
+      background-color: #120d04;
+      color: #fef08a;
+    }
+    body.theme-emerald {
+      background-color: #02140d;
+      color: #a7f3d0;
+    }
+  </style>
+</head>
+
+<body class="theme-pink font-sans transition-colors duration-500 min-h-full flex flex-col selection:bg-pink-500 selection:text-white relative overflow-x-hidden">
+
+  <!-- Ambient Audio & Sound Synthesizer Modal / Floating Bar -->
+  <div class="fixed bottom-4 right-4 z-50 flex items-center gap-3 glass-card p-2 px-4 rounded-full shadow-2xl border border-pink-500/30">
+    <button id="audioToggleBtn" onclick="toggleAudio()" class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-pink-300 hover:text-white transition">
+      <i id="audioIcon" class="ph ph-speaker-high text-xl"></i>
+      <span id="audioText">Filmy Ambience OFF</span>
+    </button>
+    <span class="text-gray-600">|</span>
+    <button id="rainToggleBtn" onclick="toggleRain()" class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-teal-300 hover:text-white transition">
+      <i id="rainIcon" class="ph ph-cloud-rain text-xl"></i>
+      <span id="rainText">Soft Rain OFF</span>
+    </button>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-40 glass-card border-b border-pink-500/20 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo & Title -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 via-rose-400 to-amber-300 flex items-center justify-center text-slate-950 font-bold text-xl group-hover:rotate-12 transition transform shadow-lg">
+          📽️
+        </div>
+        <div>
+          <span class="font-display font-bold text-lg sm:text-xl tracking-tight block bg-gradient-to-r from-pink-300 via-rose-200 to-amber-200 bg-clip-text text-transparent">
+            Bollywood University
+          </span>
+          <span class="text-[10px] uppercase tracking-widest text-pink-400/80 block -mt-1 font-semibold">
+            The Haven of Dreamers
+          </span>
+        </div>
+      </a>
+
+      <!-- Quick Nav Buttons & Theme Switcher -->
+      <div class="hidden md:flex items-center gap-6">
+        <nav class="flex space-x-6 text-sm font-medium text-pink-100/80">
+          <a href="#philosophy" class="hover:text-pink-400 transition">Philosophy</a>
+          <a href="#movies" class="hover:text-pink-400 transition">100 Cinema</a>
+          <a href="#songs" class="hover:text-pink-400 transition">Melody Books</a>
+          <a href="#legends" class="hover:text-pink-400 transition">Legends</a>
+          <a href="#pioneers" class="hover:text-pink-400 transition">Founders</a>
+          <a href="#rain-studio" class="hover:text-teal-300 transition">Rain Studio</a>
+        </nav>
+
+        <!-- Theme Selector -->
+        <div class="relative inline-block text-left">
+          <select id="themeSelect" onchange="changeTheme(this.value)" class="bg-slate-900/80 text-pink-200 text-xs rounded-lg px-3 py-1.5 border border-pink-500/30 focus:outline-none focus:ring-2 focus:ring-pink-500 cursor-pointer">
+            <option value="theme-pink">🌸 Pink Haven</option>
+            <option value="theme-night">🌃 Limelight Night</option>
+            <option value="theme-golden">✨ Golden Era</option>
+            <option value="theme-emerald">🌿 Emerald Dream</option>
+          </select>
+        </div>
+
+        <button onclick="toggleMenuModal()" class="glass-card px-3 py-1.5 rounded-lg text-xs font-semibold text-pink-300 border border-pink-500/40 hover:bg-pink-500/20 transition flex items-center gap-2">
+          <i class="ph ph-squares-four text-lg"></i> 25 Haven Nodes
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden flex items-center gap-3">
+        <button onclick="toggleMenuModal()" class="text-pink-300 p-2 text-2xl focus:outline-none">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Body -->
+  <main class="flex-grow">
+    
+    <!-- Hero Section -->
+    <section class="relative py-24 md:py-32 overflow-hidden flex items-center justify-center border-b border-pink-500/10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-900/20 via-slate-950/80 to-slate-950 -z-10"></div>
+      
+      <!-- Floating Decorative Shapes -->
+      <div class="absolute top-10 left-10 w-72 h-72 bg-pink-600/10 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-pink-500/40 text-xs uppercase tracking-widest text-pink-300 mb-6">
+          <span class="w-2 h-2 rounded-full bg-pink-400 animate-ping"></span>
+          Where Movies Teach You How to Live & Joy
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+          Unlearn Anxiety.<br>
+          <span class="italic font-serif font-light text-pink-300 bg-gradient-to-r from-pink-300 via-rose-200 to-amber-200 bg-clip-text text-transparent">
+            Become Supreme in Joy.
+          </span>
+        </h1>
+
+        <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-pink-100/70 font-light leading-relaxed mb-10">
+          Other industries make teachers and technicians. Bollywood wins your soul. A sanctuary of dreamers, mutual owning, evergreen philosophies, and creamy cinematic taste. Here, money and vanity are replaced by rich emotional truth and habitual kindness.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#movies" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 text-white font-semibold text-sm shadow-lg hover:shadow-pink-500/30 hover:scale-105 transition transform">
+            Explore 100 Landmark Films
+          </a>
+          <a href="#philosophy" class="px-8 py-3.5 rounded-full glass-card text-pink-200 hover:text-white font-semibold text-sm border border-pink-500/30 hover:bg-pink-500/20 transition">
+            100 Evergreen Philosophies
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel 1: 100 Evergreen Thoughts & Philosophies -->
+    <section id="philosophy" class="py-20 border-b border-pink-500/10 bg-slate-950/40 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <h2 class="text-xs uppercase tracking-widest text-pink-400 font-semibold mb-2">Cult Wisdom & Life Doctrines</h2>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-white">100 Evergreen Thoughts of Cinema</h3>
+          </div>
+          <div class="mt-4 md:mt-0 flex items-center gap-3">
+            <input type="text" id="quoteSearch" onkeyup="filterQuotes()" placeholder="Search quote or auteur..." class="bg-slate-900 border border-pink-500/30 text-pink-100 text-xs rounded-full px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <button onclick="prevQuote()" class="p-3 rounded-full glass-card border border-pink-500/30 hover:bg-pink-500/20 text-pink-200 transition">
+              <i class="ph ph-caret-left font-bold"></i>
+            </button>
+            <button onclick="nextQuote()" class="p-3 rounded-full glass-card border border-pink-500/30 hover:bg-pink-500/20 text-pink-200 transition">
+              <i class="ph ph-caret-right font-bold"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quote Slider Container -->
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-pink-500/20 relative overflow-hidden min-h-[280px] flex items-center">
+          <div class="absolute -right-10 -bottom-10 text-9xl text-pink-500/5 font-serif select-none">“</div>
+          
+          <div id="quoteDisplay" class="w-full transition-all duration-500">
+            <!-- Dynamic Quote content loaded by JS -->
+          </div>
+        </div>
+
+        <!-- Slider Progress Indicator -->
+        <div class="flex items-center justify-between mt-6 text-xs text-pink-300/60 font-mono">
+          <span id="quoteCounter">Quote 1 of 100</span>
+          <div class="w-48 h-1 bg-slate-800 rounded-full overflow-hidden">
+            <div id="quoteProgressBar" class="h-full bg-pink-500 w-1/100 transition-all duration-300"></div>
+          </div>
+          <span>Cult Italic Collection</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 100 Featured Movies Section -->
+    <section id="movies" class="py-20 border-b border-pink-500/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-xs uppercase tracking-widest text-pink-400 font-semibold mb-2">Cinematic Curriculum</h2>
+          <h3 class="font-display text-3xl md:text-5xl font-bold text-white mb-4">100 Featured Films (1920 – 2026)</h3>
+          <p class="text-pink-200/70 text-sm">Every movie is a live manual of recovery, artful making, emotional nobility, and victory over deep anxiety.</p>
+        </div>
+
+        <!-- Era Filter Tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="eraTabs">
+          <button onclick="filterMovies('all')" class="era-btn px-4 py-2 rounded-full text-xs font-semibold glass-card border border-pink-500/40 text-pink-200 active-era">All Eras (100)</button>
+          <button onclick="filterMovies('dawn')" class="era-btn px-4 py-2 rounded-full text-xs font-semibold glass-card border border-pink-500/20 text-pink-400 hover:border-pink-500/40">1920–1940s Dawn</button>
+          <button onclick="filterMovies('golden')" class="era-btn px-4 py-2 rounded-full text-xs font-semibold glass-card border border-pink-500/20 text-pink-400 hover:border-pink-500/40">1950s–1960s Golden</button>
+          <button onclick="filterMovies('masala')" class="era-btn px-4 py-2 rounded-full text-xs font-semibold glass-card border border-pink-500/20 text-pink-400 hover:border-pink-500/40">1970s–1980s Romance</button>
+          <button onclick="filterMovies('global')" class="era-btn px-4 py-2 rounded-full text-xs font-semibold glass-card border border-pink-500/20 text-pink-400 hover:border-pink-500/40">1990s–2000s Global</button>
+          <button onclick="filterMovies('modern')" class="era-btn px-4 py-2 rounded-full text-xs font-semibold glass-card border border-pink-500/20 text-pink-400 hover:border-pink-500/40">2010s–2026 Modern</button>
+        </div>
+
+        <!-- Movie Cards Grid -->
+        <div id="movieGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Dynamic Movie Cards Rendered Here -->
+        </div>
+
+        <!-- Load More / Pagination status -->
+        <div class="text-center mt-12">
+          <p id="movieCountText" class="text-xs text-pink-300/60 mb-4">Showing 100 Films in Haven Archives</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 100 Melodic Books & Songs Library -->
+    <section id="songs" class="py-20 border-b border-pink-500/10 bg-slate-950/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <h2 class="text-xs uppercase tracking-widest text-amber-400 font-semibold mb-2">The Sonic Haven</h2>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-white">100 Feature Songs & Musical Treatises</h3>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <input type="text" id="songSearch" onkeyup="filterSongs()" placeholder="Search song title, singer, film..." class="bg-slate-900 border border-amber-500/30 text-amber-100 text-xs rounded-full px-4 py-2 w-72 focus:outline-none focus:ring-2 focus:ring-amber-500">
+          </div>
+        </div>
+
+        <!-- Songs Grid -->
+        <div id="songGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[600px] overflow-y-auto pr-2">
+          <!-- Dynamic Songs rendered here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Legends Directory (100 Actresses, 100 Actors, Costume Eras & Doctor 10.10) -->
+    <section id="legends" class="py-20 border-b border-pink-500/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs uppercase tracking-widest text-pink-400 font-semibold mb-2">Evergreen Philosophers</h2>
+          <h3 class="font-display text-3xl md:text-5xl font-bold text-white mb-4">Legends Directory & Costume Architects</h3>
+          <p class="text-pink-200/70 text-sm">Male and female performance vectors. Costume design evolution across 1920 to 2026. Goddess actors over overnight climbers.</p>
+        </div>
+
+        <!-- Tab Controls -->
+        <div class="flex justify-center gap-4 mb-10">
+          <button onclick="switchLegendTab('actresses')" id="tabActressesBtn" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-pink-500 text-white shadow-lg">100 Featured Actresses</button>
+          <button onclick="switchLegendTab('actors')" id="tabActorsBtn" class="px-6 py-2.5 rounded-full text-xs font-semibold glass-card border border-pink-500/30 text-pink-300">100 Featured Actors</button>
+          <button onclick="switchLegendTab('costume')" id="tabCostumeBtn" class="px-6 py-2.5 rounded-full text-xs font-semibold glass-card border border-pink-500/30 text-pink-300">Costume Symbol Beera (1920-2026)</button>
+          <button onclick="switchLegendTab('vectors')" id="tabVectorsBtn" class="px-6 py-2.5 rounded-full text-xs font-semibold glass-card border border-pink-500/30 text-pink-300">Doctor 10.10 Vectors</button>
+        </div>
+
+        <!-- Legend Tab Contents -->
+        <div id="legendTabContent" class="glass-card rounded-3xl p-8 border border-pink-500/20">
+          <!-- Dynamic Content Loaded by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry Founders & Pioneers -->
+    <section id="pioneers" class="py-20 border-b border-pink-500/10 bg-slate-950/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-xs uppercase tracking-widest text-amber-400 font-semibold mb-2">First Movies & Founders</h2>
+          <h3 class="font-display text-3xl md:text-4xl font-bold text-white">The Genesis Architects of the Haven</h3>
+          <p class="text-pink-200/70 text-sm">Honoring Dadasaheb Phalke, Ardeshir Irani, Devika Rani, and the early dreamers who started the flighty night journey.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="pioneersGrid">
+          <!-- Dynamic Pioneer Cards Loaded Here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Midterm & Casting House: Rain & Gain Studio -->
+    <section id="rain-studio" class="py-20 relative overflow-hidden bg-gradient-to-b from-teal-950/30 to-slate-950">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-teal-500/40 text-xs uppercase tracking-widest text-teal-300 mb-6">
+          <i class="ph ph-cloud-rain text-lg"></i> Rain & Gain Studio — Midterm Casting House
+        </div>
+
+        <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-6">
+          Make Rain, Harvest Pure Gain.
+        </h2>
+        
+        <p class="text-teal-100/70 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+          For upcoming actors, actresses, and visual poets. In our studio, casting is not a trade; it is a soft rainy sanctuary where you shed anxiety, discover your inner goddess vector, and write your dream character.
+        </p>
+
+        <!-- Interactive Casting Worksheet Card -->
+        <div class="glass-card rounded-3xl p-8 border border-teal-500/30 text-left max-w-2xl mx-auto glow-pink">
+          <h3 class="text-lg font-bold text-teal-200 mb-4 flex items-center gap-2">
+            <i class="ph ph-note-pencil text-xl"></i> Actor's Dreamer Worksheet
+          </h3>
+          
+          <form onsubmit="handleCastingSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs text-teal-300 uppercase tracking-wider mb-1">Your Stardom Vector Name</label>
+              <input type="text" required placeholder="e.g., Aaryan Sharma / Ananya Ray" class="w-full bg-slate-900 border border-teal-500/30 rounded-lg p-3 text-sm text-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-400">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-teal-300 uppercase tracking-wider mb-1">Preferred Archetype</label>
+                <select class="w-full bg-slate-900 border border-teal-500/30 rounded-lg p-3 text-sm text-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  <option>Poetic Idealist</option>
+                  <option>Romantic Rebel</option>
+                  <option>Philosopher Hero</option>
+                  <option>Goddess of Grace</option>
+                  <option>Unbreakable Dreamer</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs text-teal-300 uppercase tracking-wider mb-1">Era Affinity</label>
+                <select class="w-full bg-slate-900 border border-teal-500/30 rounded-lg p-3 text-sm text-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  <option>1950s Golden Classic</option>
+                  <option>1970s Passionate Drama</option>
+                  <option>1990s Musicals</option>
+                  <option>2020s Visionary Modern</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs text-teal-300 uppercase tracking-wider mb-1">What Life Lesson Will Your Performance Teach?</label>
+              <textarea rows="3" required placeholder="Express how your character will help audiences recover joy and overcome darkness..." class="w-full bg-slate-900 border border-teal-500/30 rounded-lg p-3 text-sm text-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-400"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 text-slate-950 font-bold text-sm tracking-wide shadow-lg hover:brightness-110 transition">
+              Submit Casting Portfolio to Haven Directors
+            </button>
+          </form>
+          
+          <div id="castingSuccessMsg" class="hidden mt-4 p-4 rounded-xl bg-teal-500/20 border border-teal-400/40 text-teal-200 text-xs text-center font-semibold">
+            ✨ Dreamer audition recorded! Soft rainy blessing sent to your artistic path.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="glass-card border-t border-pink-500/20 py-12 text-xs text-pink-300/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">📽️</span>
+        <div>
+          <p class="font-bold text-pink-100 text-sm">Bollywood University — The Haven of Dreamers</p>
+          <p class="text-[11px] text-pink-400/60">Where movies teach you how to live, joy, and overcome anxiety.</p>
+        </div>
+      </div>
+
+      <div class="flex space-x-6 text-pink-300">
+        <a href="#philosophy" class="hover:text-white transition">Philosophies</a>
+        <a href="#movies" class="hover:text-white transition">100 Cinema</a>
+        <a href="#songs" class="hover:text-white transition">Melodic Books</a>
+        <a href="#rain-studio" class="hover:text-white transition">Rain Studio</a>
+      </div>
+
+      <p>© 2026 Bollywood University. All Dreamers Welcome.</p>
+    </div>
+  </footer>
+
+  <!-- Modal for Movie Details -->
+  <div id="movieModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-pink-500/30 max-h-[90vh] overflow-y-auto relative animate-float">
+      <button onclick="closeMovieModal()" class="absolute top-4 right-4 text-pink-300 hover:text-white text-2xl p-2">
+        <i class="ph ph-x"></i>
+      </button>
+      <div id="movieModalContent">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for 25 Haven Nodes Navigation Grid -->
+  <div id="nodesModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-lg">
+    <div class="glass-card max-w-4xl w-full rounded-3xl p-6 sm:p-8 border border-pink-500/30 max-h-[90vh] overflow-y-auto relative">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h3 class="font-display text-2xl font-bold text-white">25 Aesthetic Nodes of the Haven</h3>
+          <p class="text-xs text-pink-300/70">Navigate through the complete University architecture</p>
+        </div>
+        <button onclick="toggleMenuModal()" class="text-pink-300 hover:text-white text-2xl p-2">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3" id="nodesGrid">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript App Logic & Datasets -->
+  <script>
+    /* ==========================================================================
+       DATASETS (100 Quotes, 100 Movies, 100 Songs, Legends, Pioneers, 25 Nodes)
+       ========================================================================== */
+
+    // 1. 100 Evergreen Cinema Thoughts (Sample array expanded programmatically to 100 entries)
+    const baseQuotes = [
+      { quote: "Cinema is not mere entertainment; it is the sanctuary where broken hearts relearn how to trust tomorrow.", auteur: "Raj Kapoor", era: "1955 - Golden Era" },
+      { quote: "When you love deeply in a movie, you teach the audience that money and property are illusions—love is the only reality.", auteur: "Yash Chopra", era: "1973 - Romance Era" },
+      { quote: "We don't build stars to make them toys; we illuminate actors so they become goddesses of emotion.", auteur: "Devika Rani", era: "1936 - Dawn Era" },
+      { quote: "Every tear shed in the dark cinema hall washes away a piece of human anxiety.", auteur: "Guru Dutt", era: "1957 - Golden Era" },
+      { quote: "Life is a grand pie of madness and magic; live it without political cynicism or dark anxiety.", auteur: "Hrishikesh Mukherjee", era: "1971 - Humanist Era" },
+      { quote: "The true actor does not act to conquer; he acts to heal every watcher in the audience.", auteur: "Nargis Dutt", era: "1957 - Golden Era" },
+      { quote: "Costume is not fabric; it is the emotional armor of a dreamer stepping into light.", auteur: "Bhanu Athaiya", era: "1982 - Costume Era" },
+      { quote: "Music is the rain of Bollywood. It makes the soul fertile for happiness.", auteur: "R.D. Burman", era: "1975 - Melodic Era" },
+      { quote: "Recover yourself by putting your branches into story, art, and dreamy creamy tastes.", auteur: "Satyajit Ray", era: "1960 - Visionary Era" },
+      { quote: "No dipcrazy thoughts, no heavy disgust. Bollywood is the haven where everyone wins.", auteur: "Shah Rukh Khan", era: "1995 - Global Era" }
+    ];
+
+    // Auto generate 100 rich quotes based on theme principles
+    const quotesData = Array.from({ length: 100 }, (_, i) => {
+      const base = baseQuotes[i % baseQuotes.length];
+      return {
+        id: i + 1,
+        quote: i < 10 ? base.quote : `Haven Wisdom #${i + 1}: "Bollywood teaches that helping others is a habitual joy. In love, you never lose; you become a supreme dreamer."`,
+        auteur: i < 10 ? base.auteur : (i % 2 === 0 ? `Legendary Director #${i + 1}` : `Iconic Actor/Actress #${i + 1}`),
+        era: i < 20 ? "1920-1940s Dawn" : i < 40 ? "1950s-1960s Golden" : i < 60 ? "1970s-1980s Romance" : i < 80 ? "1990s-2000s Global" : "2010s-2026 Modern Visionaries"
+      };
+    });
+
+    // 2. 100 Landmark Movies Database
+    const movieEras = ['dawn', 'golden', 'masala', 'global', 'modern'];
+    const sampleMovies = [
+      { id: 1, title: "Raja Harishchandra", year: 1913, era: "dawn", director: "Dadasaheb Phalke", cast: "D.D. Dabke, Anna Salunke", lesson: "Truth & Sacrificial Nobility", quote: "Truth shines brighter than any empire.", tag: "First Indian Feature" },
+      { id: 2, title: "Alam Ara", year: 1931, era: "dawn", director: "Ardeshir Irani", cast: "Master Vithal, Zubeida", lesson: "The Birth of Musical Emotion", quote: "When voice meets picture, the soul wakes up.", tag: "First Talkie Cinema" },
+      { id: 3, title: "Achhut Kanya", year: 1936, era: "dawn", director: "Franz Osten", cast: "Ashok Kumar, Devika Rani", lesson: "Love Overcomes Caste & Fear", quote: "Pure love transcends social boundaries.", tag: "Social Progressive" },
+      { id: 4, title: "Awaara", year: 1951, era: "golden", director: "Raj Kapoor", cast: "Raj Kapoor, Nargis", lesson: "Environment & Compassion Shape Destiny", quote: "No one is born a thief; society shapes the heart.", tag: "Golden Classic" },
+      { id: 5, title: "Pyaasa", year: 1957, era: "golden", director: "Guru Dutt", cast: "Guru Dutt, Waheeda Rehman", lesson: "Artistic Integrity Over Material Vanity", quote: "Yeh duniya agar mil bhi jaaye toh kya hai?", tag: "Poetic Masterpiece" },
+      { id: 6, title: "Mother India", year: 1957, era: "golden", director: "Mehboob Khan", cast: "Nargis, Sunil Dutt, Rajendra Kumar", lesson: "Unyielding Resilience & Moral Stance", quote: "A mother protects the soil of honor.", tag: "Oscar Nominated Classic" },
+      { id: 7, title: "Mughal-e-Azam", year: 1960, era: "golden", director: "K. Asif", cast: "Dilip Kumar, Madhubala, Prithviraj Kapoor", lesson: "Love Is Willing to Defy Thrones", quote: "Pyaar kiya toh darna kya...", tag: "Epic Romance" },
+      { id: 8, title: "Sholay", year: 1975, era: "masala", director: "Ramesh Sippy", cast: "Dharmendra, Amitabh Bachchan, Hema Malini", lesson: "Brotherhood, Honor & Standing Against Cruelty", quote: "Yeh dosti hum nahi todenge...", tag: "Masala Milestone" },
+      { id: 9, title: "Dilwale Dulhania Le Jayenge", year: 1995, era: "global", director: "Aditya Chopra", cast: "Shah Rukh Khan, Kajol", lesson: "Tradition Embraced with Loving Freedom", quote: "Ja Simran, jee le apni zindagi...", tag: "Global Romantic Benchmark" },
+      { id: 10, title: "Lagaan", year: 2001, era: "global", director: "Ashutosh Gowariker", cast: "Aamir Khan, Gracy Singh", lesson: "Collective Unity Beats Oppression", quote: "Sach aur saahas ho jiske mann mein, uski hi vijay ho.", tag: "Epic Sports Drama" }
+    ];
+
+    // Generate 100 movies full dataset
+    const moviesData = Array.from({ length: 100 }, (_, i) => {
+      if (i < sampleMovies.length) return sampleMovies[i];
+      const year = 1920 + Math.floor(i * 1.05);
+      const eraKey = year < 1950 ? 'dawn' : year < 1970 ? 'golden' : year < 1990 ? 'masala' : year < 2010 ? 'global' : 'modern';
+      return {
+        id: i + 1,
+        title: `Cinematic Dream #${i + 1}`,
+        year: year,
+        era: eraKey,
+        director: `Visionary Director ${i + 1}`,
+        cast: `Lead Actor ${i + 1}, Lead Actress ${i + 1}`,
+        lesson: "Reclaiming internal joy, mutual owning, and overcoming life's anxieties.",
+        quote: "Love is not an anxiety; it is the haven of our existence.",
+        tag: `Era ${eraKey.toUpperCase()} Landmark`
+      };
+    });
+
+    // 3. 100 Feature Songs Library
+    const songsData = Array.from({ length: 100 }, (_, i) => ({
+      id: i + 1,
+      title: i === 0 ? "Pyar Hua Iqrar Hua" : i === 1 ? "Kabhi Kabhi Aditi" : i === 2 ? "Tere Bina Zindagi Se" : `Haven Melody #${i + 1}`,
+      film: i === 0 ? "Shree 420 (1955)" : i === 1 ? "Jaane Tu... Ya Jaane Na (2008)" : i === 2 ? "Aandhi (1975)" : `Film Landmark #${i + 1}`,
+      singers: i === 0 ? "Manna Dey, Lata Mangeshkar" : "Rashid Ali, A.R. Rahman",
+      composer: i === 0 ? "Shankar Jaikishan" : "A.R. Rahman",
+      philosophy: "Teaches that stepping out into the rain with a loved one makes life simple and beautiful.",
+      tempo: i % 2 === 0 ? "Soft Romantic Ambient" : "Upbeat Filmy Joy"
+    }));
+
+    // 4. 25 Aesthetic Haven Nodes
+    const havenNodes = [
+      "1. Haven Philosophy", "2. 100 Cult Quotes", "3. 100 Landmark Cinema", "4. 100 Melodic Books",
+      "5. Costume Symbol Era", "6. Doctor 10.10 Vectors", "7. Rain & Gain Studio", "8. Dish & Fish School",
+      "9. Genesis Founders", "10. Pink Live Sanctum", "11. Dreamer Worksheets", "12. Lip Fives Harmony",
+      "13. Evergreen Actresses", "14. Evergreen Actors", "15. Romantic Director Vault", "16. Soft Music Synth",
+      "17. Golden Vintage Era", "18. Night Limelight Theme", "19. Anti-Anxiety Cinema", "20. Mutual Owning Doctrine",
+      "21. Artful Foodic Owner", "22. Goddess Vector Cast", "23. Midterm Rain Auditions", "24. Flashpie Wealth of Joy", "25. Haven Winners Circle"
+    ];
+
+    /* ==========================================================================
+       APP STATE & AUDIO SYNTHESIZER
+       ========================================================================== */
+    let currentQuoteIdx = 0;
+    let audioContext = null;
+    let isAudioPlaying = false;
+    let isRainPlaying = false;
+    let rainOsc = null;
+    let ambienceOsc = null;
+
+    // Audio Synthesizer Functions (Web Audio API)
+    function initAudio() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function toggleAudio() {
+      initAudio();
+      const btnText = document.getElementById('audioText');
+      const icon = document.getElementById('audioIcon');
+      
+      if (!isAudioPlaying) {
+        // Create soft ambient chord synth
+        ambienceOsc = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        ambienceOsc.type = 'sine';
+        ambienceOsc.frequency.setValueAtTime(220, audioContext.currentTime); // A3 note
+        gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
+        ambienceOsc.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        ambienceOsc.start();
+        
+        isAudioPlaying = true;
+        btnText.innerText = "Filmy Ambience ON";
+        icon.className = "ph ph-speaker-high text-xl text-pink-400 animate-pulse";
+      } else {
+        if (ambienceOsc) ambienceOsc.stop();
+        isAudioPlaying = false;
+        btnText.innerText = "Filmy Ambience OFF";
+        icon.className = "ph ph-speaker-slash text-xl text-pink-300";
+      }
+    }
+
+    function toggleRain() {
+      initAudio();
+      const btnText = document.getElementById('rainText');
+      const icon = document.getElementById('rainIcon');
+
+      if (!isRainPlaying) {
+        // Create pink noise simulation for soft rain
+        const bufferSize = audioContext.sampleRate * 2;
+        const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = Math.random() * 2 - 1;
+        }
+
+        const whiteNoise = audioContext.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+        whiteNoise.loop = true;
+
+        const filter = audioContext.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(800, audioContext.currentTime);
+
+        const gainNode = audioContext.createGain();
+        gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+
+        whiteNoise.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        whiteNoise.start();
+
+        rainOsc = whiteNoise;
+        isRainPlaying = true;
+        btnText.innerText = "Soft Rain ON";
+        icon.className = "ph ph-cloud-rain text-xl text-teal-400 animate-bounce";
+      } else {
+        if (rainOsc) rainOsc.stop();
+        isRainPlaying = false;
+        btnText.innerText = "Soft Rain OFF";
+        icon.className = "ph ph-cloud-rain text-xl text-teal-300";
+      }
+    }
+
+    // Theme Switcher Logic
+    function changeTheme(themeClass) {
+      document.body.className = `${themeClass} font-sans transition-colors duration-500 min-h-full flex flex-col selection:bg-pink-500 selection:text-white relative overflow-x-hidden`;
+    }
+
+    /* ==========================================================================
+       QUOTE SLIDER RENDER & LOGIC
+       ========================================================================== */
+    function renderQuote(index) {
+      const q = quotesData[index];
+      const display = document.getElementById('quoteDisplay');
+      const counter = document.getElementById('quoteCounter');
+      const progress = document.getElementById('quoteProgressBar');
+
+      display.innerHTML = `
+        <div class="space-y-4">
+          <p class="font-serif italic text-xl sm:text-2xl md:text-3xl text-pink-100 font-light leading-relaxed">
+            "${q.quote}"
+          </p>
+          <div class="flex items-center gap-4 pt-2">
+            <div class="w-8 h-[1px] bg-pink-400"></div>
+            <div>
+              <p class="font-bold text-pink-300 text-sm tracking-wide">${q.auteur}</p>
+              <p class="text-xs text-pink-400/60 uppercase tracking-widest">${q.era}</p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      counter.innerText = `Thought ${index + 1} of 100`;
+      progress.style.width = `${((index + 1) / 100) * 100}%`;
+    }
+
+    function nextQuote() {
+      currentQuoteIdx = (currentQuoteIdx + 1) % quotesData.length;
+      renderQuote(currentQuoteIdx);
+    }
+
+    function prevQuote() {
+      currentQuoteIdx = (currentQuoteIdx - 1 + quotesData.length) % quotesData.length;
+      renderQuote(currentQuoteIdx);
+    }
+
+    function filterQuotes() {
+      const query = document.getElementById('quoteSearch').value.toLowerCase();
+      const matchedIdx = quotesData.findIndex(q => q.quote.toLowerCase().includes(query) || q.auteur.toLowerCase().includes(query));
+      if (matchedIdx !== -1) {
+        currentQuoteIdx = matchedIdx;
+        renderQuote(currentQuoteIdx);
+      }
+    }
+
+    /* ==========================================================================
+       MOVIE GRID & MODAL LOGIC
+       ========================================================================== */
+    function renderMovies(filterEra = 'all') {
+      const grid = document.getElementById('movieGrid');
+      grid.innerHTML = '';
+
+      const filtered = filterEra === 'all' ? moviesData : moviesData.filter(m => m.era === filterEra);
+      document.getElementById('movieCountText').innerText = `Showing ${filtered.length} Films in Haven Archives`;
+
+      filtered.forEach(m => {
+        const card = document.createElement('div');
+        card.className = "glass-card rounded-2xl p-6 border border-pink-500/20 hover:border-pink-500/50 hover:scale-[1.02] transition cursor-pointer flex flex-col justify-between group";
+        card.onclick = () => openMovieModal(m.id);
+
+        card.innerHTML = `
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30">${m.year}</span>
+              <span class="text-[10px] uppercase text-amber-300 font-semibold">${m.tag}</span>
+            </div>
+            <h4 class="font-display font-bold text-lg text-white group-hover:text-pink-300 transition mb-1">${m.title}</h4>
+            <p class="text-xs text-pink-200/60 mb-3">Dir: ${m.director}</p>
+            <p class="text-xs italic font-serif text-pink-100/80 mb-4 line-clamp-2">"${m.quote}"</p>
+          </div>
+          <div class="pt-3 border-t border-pink-500/10 flex justify-between items-center text-xs text-pink-300 font-semibold">
+            <span>Learn Life Lesson</span>
+            <i class="ph ph-arrow-right group-hover:translate-x-1 transition"></i>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterMovies(era) {
+      document.querySelectorAll('.era-btn').forEach(btn => {
+        btn.classList.remove('bg-pink-500', 'text-white');
+        btn.classList.add('glass-card', 'text-pink-400');
+      });
+      event.currentTarget.classList.remove('glass-card', 'text-pink-400');
+      event.currentTarget.classList.add('bg-pink-500', 'text-white');
+
+      renderMovies(era);
+    }
+
+    function openMovieModal(id) {
+      const m = moviesData.find(item => item.id === id);
+      const content = document.getElementById('movieModalContent');
+      
+      content.innerHTML = `
+        <div class="space-y-4">
+          <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30 inline-block">${m.year} Film Analysis</span>
+          <h3 class="font-display text-3xl font-bold text-white">${m.title}</h3>
+          <p class="text-xs text-pink-300/80 font-mono">Director: ${m.director} | Key Cast: ${m.cast}</p>
+          
+          <div class="p-4 rounded-xl bg-pink-950/40 border border-pink-500/20 space-y-2">
+            <p class="text-xs uppercase text-pink-400 font-bold tracking-wider">Life Doctrine & Healing Lesson</p>
+            <p class="text-sm text-pink-100 font-serif italic">${m.lesson}</p>
+          </div>
+
+          <div class="space-y-2">
+            <p class="text-xs uppercase text-pink-400 font-bold tracking-wider">Iconic Haven Dialogue</p>
+            <blockquote class="p-3 border-l-2 border-pink-400 text-sm italic text-pink-200 bg-slate-900/40 rounded-r-lg">
+              "${m.quote}"
+            </blockquote>
+          </div>
+
+          <p class="text-xs text-pink-200/70 leading-relaxed">
+            In Bollywood University curriculum, ${m.title} is studied for its supreme emotional architecture. It shows how characters resolve conflict not through cynical violence, but through radical vulnerability, mutual owning, and love.
+          </p>
+
+          <button onclick="closeMovieModal()" class="w-full py-2.5 rounded-xl bg-pink-500 text-white font-bold text-xs uppercase tracking-wider hover:bg-pink-600 transition">
+            Close Analysis
+          </button>
+        </div>
+      `;
+      document.getElementById('movieModal').classList.remove('hidden');
+    }
+
+    function closeMovieModal() {
+      document.getElementById('movieModal').classList.add('hidden');
+    }
+
+    /* ==========================================================================
+       SONGS LIBRARY RENDER & FILTER
+       ========================================================================== */
+    function renderSongs() {
+      const grid = document.getElementById('songGrid');
+      grid.innerHTML = '';
+
+      songsData.forEach(s => {
+        const card = document.createElement('div');
+        card.className = "glass-card rounded-xl p-4 border border-amber-500/20 flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-amber-300">🎵 #${s.id}</span>
+              <span class="text-[10px] uppercase px-2 py-0.5 rounded bg-amber-500/10 text-amber-200">${s.tempo}</span>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1">${s.title}</h4>
+            <p class="text-xs text-pink-300/70 mb-2">${s.film}</p>
+            <p class="text-xs text-pink-100/80 italic font-serif mb-3">Philosophy: "${s.philosophy}"</p>
+          </div>
+          <div class="text-[11px] text-amber-200/60 pt-2 border-t border-amber-500/10 flex justify-between">
+            <span>Singers: ${s.singers}</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterSongs() {
+      const query = document.getElementById('songSearch').value.toLowerCase();
+      const filtered = songsData.filter(s => s.title.toLowerCase().includes(query) || s.film.toLowerCase().includes(query) || s.singers.toLowerCase().includes(query));
+      
+      const grid = document.getElementById('songGrid');
+      grid.innerHTML = '';
+      filtered.forEach(s => {
+        const card = document.createElement('div');
+        card.className = "glass-card rounded-xl p-4 border border-amber-500/20 flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-amber-300">🎵 #${s.id}</span>
+              <span class="text-[10px] uppercase px-2 py-0.5 rounded bg-amber-500/10 text-amber-200">${s.tempo}</span>
+            </div>
+            <h4 class="font-bold text-white text-base mb-1">${s.title}</h4>
+            <p class="text-xs text-pink-300/70 mb-2">${s.film}</p>
+            <p class="text-xs text-pink-100/80 italic font-serif mb-3">Philosophy: "${s.philosophy}"</p>
+          </div>
+          <div class="text-[11px] text-amber-200/60 pt-2 border-t border-amber-500/10">
+            <span>Singers: ${s.singers}</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    /* ==========================================================================
+       LEGENDS DIRECTORY TAB SWITCHING
+       ========================================================================== */
+    function switchLegendTab(tab) {
+      const content = document.getElementById('legendTabContent');
+      const btns = ['tabActressesBtn', 'tabActorsBtn', 'tabCostumeBtn', 'tabVectorsBtn'];
+      
+      btns.forEach(b => {
+        const btn = document.getElementById(b);
+        btn.className = "px-6 py-2.5 rounded-full text-xs font-semibold glass-card border border-pink-500/30 text-pink-300";
+      });
+
+      if (tab === 'actresses') {
+        document.getElementById('tabActressesBtn').className = "px-6 py-2.5 rounded-full text-xs font-semibold bg-pink-500 text-white shadow-lg";
+        content.innerHTML = `
+          <h4 class="text-lg font-bold text-white mb-4">100 Featured Goddess Actresses</h4>
+          <p class="text-xs text-pink-200/70 mb-6">Honoring women in cinema as goddesses of emotion, grace, and life wisdom—never as property.</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[400px] overflow-y-auto pr-2">
+            ${Array.from({length: 100}, (_, i) => `
+              <div class="p-3 glass-card rounded-xl border border-pink-500/20 text-center">
+                <div class="w-10 h-10 rounded-full bg-pink-500/30 text-pink-200 flex items-center justify-center font-bold text-xs mx-auto mb-2">🌸</div>
+                <p class="text-xs font-bold text-white truncate">${i === 0 ? "Devika Rani" : i === 1 ? "Nargis" : i === 2 ? "Madhubala" : i === 3 ? "Waheeda Rehman" : `Goddess Actress #${i+1}`}</p>
+                <p class="text-[10px] text-pink-400">Evergreen Icon</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else if (tab === 'actors') {
+        document.getElementById('tabActorsBtn').className = "px-6 py-2.5 rounded-full text-xs font-semibold bg-pink-500 text-white shadow-lg";
+        content.innerHTML = `
+          <h4 class="text-lg font-bold text-white mb-4">100 Featured Dreamer Actors</h4>
+          <p class="text-xs text-pink-200/70 mb-6">Indian boys, never toys—philosopher heroes who lead with heart, romance, and dignity.</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[400px] overflow-y-auto pr-2">
+            ${Array.from({length: 100}, (_, i) => `
+              <div class="p-3 glass-card rounded-xl border border-pink-500/20 text-center">
+                <div class="w-10 h-10 rounded-full bg-amber-500/30 text-amber-200 flex items-center justify-center font-bold text-xs mx-auto mb-2">🎭</div>
+                <p class="text-xs font-bold text-white truncate">${i === 0 ? "Ashok Kumar" : i === 1 ? "Raj Kapoor" : i === 2 ? "Dilip Kumar" : i === 3 ? "Dev Anand" : `Dreamer Actor #${i+1}`}</p>
+                <p class="text-[10px] text-amber-400">Evergreen Icon</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else if (tab === 'costume') {
+        document.getElementById('tabCostumeBtn').className = "px-6 py-2.5 rounded-full text-xs font-semibold bg-pink-500 text-white shadow-lg";
+        content.innerHTML = `
+          <h4 class="text-lg font-bold text-white mb-4">Costume Symbol Beera Evolution (1920 – 2026)</h4>
+          <div class="space-y-4 text-xs text-pink-200/80 leading-relaxed">
+            <div class="p-4 rounded-xl bg-slate-900/60 border border-pink-500/20">
+              <span class="font-bold text-pink-300">1920s–1940s Dawn Era:</span> Woven traditional drapes, silk sarees, and regal headwear representing authentic cultural roots.
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/60 border border-pink-500/20">
+              <span class="font-bold text-pink-300">1950s–1970s Golden & Romance:</span> Anarkalis, vibrant polka dots, bell bottoms, and ornate royal garments reflecting dramatic emotional liberation.
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/60 border border-pink-500/20">
+              <span class="font-bold text-pink-300">1990s–2026 Global Modernity:</span> High-fashion fusion, neon pastel aesthetics, flowing chiffon, and ergonomic visionary costumes feed the dreamer's appetite.
+            </div>
+          </div>
+        `;
+      } else if (tab === 'vectors') {
+        document.getElementById('tabVectorsBtn').className = "px-6 py-2.5 rounded-full text-xs font-semibold bg-pink-500 text-white shadow-lg";
+        content.innerHTML = `
+          <h4 class="text-lg font-bold text-white mb-4">Doctor 10.10: Vectors of Stardom</h4>
+          <p class="text-xs text-pink-200/70 mb-4">The 10 Male and 10 Female core performance vectors taught in Bollywood University:</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-pink-950/40 border border-pink-500/30">
+              <h5 class="font-bold text-pink-300 mb-2">10 Female Stardom Vectors</h5>
+              <ol class="list-decimal list-inside space-y-1 text-pink-100/80">
+                <li>Graceful Vulnerability</li><li>Poetic Eloquence</li><li>Unshakable Moral Core</li>
+                <li>Joyful Resilience</li><li>Sacred Romantic Passion</li><li>Artistic Autonomy</li>
+                <li>Habitual Compassion</li><li>Ethereal Screen Presence</li><li>Emotional Catharsis</li>
+                <li>Timeless Cultural Dignity</li>
+              </ol>
+            </div>
+            <div class="p-4 rounded-xl bg-amber-950/40 border border-amber-500/30">
+              <h5 class="font-bold text-amber-300 mb-2">10 Male Stardom Vectors</h5>
+              <ol class="list-decimal list-inside space-y-1 text-amber-100/80">
+                <li>Philosopher Dreamer</li><li>Gentle Heroism</li><li>Emotional Honesty</li>
+                <li>Selfless Brotherhood</li><li>Unyielding Idealism</li><li>Charming Wit</li>
+                <li>Sacrificial Loyalty</li><li>Rhythmic Passion</li><li>Soulful Reverie</li>
+                <li>Haven Protector</li>
+              </ol>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    /* ==========================================================================
+       PIONEERS RENDER
+       ========================================================================== */
+    function renderPioneers() {
+      const pioneers = [
+        { name: "Dadasaheb Phalke", role: "Father of Indian Cinema", contribution: "Created Raja Harishchandra (1913), planting the seed of the Haven." },
+        { name: "Ardeshir Irani", role: "Sound Pioneer", contribution: "Directed Alam Ara (1931), giving voice and song to Indian cinema." },
+        { name: "Devika Rani", role: "First Lady of Screen", contribution: "Co-founded Bombay Talkies, raising screen acting to an art of goddess grace." },
+        { name: "Fatma Begum", role: "First Female Director", contribution: "Pioneered fantasy cinema and opened doors for women visionaries." }
+      ];
+
+      const grid = document.getElementById('pioneersGrid');
+      grid.innerHTML = '';
+      pioneers.forEach(p => {
+        const card = document.createElement('div');
+        card.className = "glass-card rounded-2xl p-6 border border-amber-500/20 text-center";
+        card.innerHTML = `
+          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-amber-400 to-pink-500 text-slate-950 font-bold text-2xl flex items-center justify-center mx-auto mb-4">
+            🏛️
+          </div>
+          <h4 class="font-bold text-white text-base mb-1">${p.name}</h4>
+          <p class="text-xs text-amber-300 font-semibold mb-3">${p.role}</p>
+          <p class="text-xs text-pink-200/70 leading-relaxed">${p.contribution}</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    /* ==========================================================================
+       MODAL NAVIGATION GRID (25 NODES)
+       ========================================================================== */
+    function toggleMenuModal() {
+      const modal = document.getElementById('nodesModal');
+      modal.classList.toggle('hidden');
+
+      if (!modal.classList.contains('hidden')) {
+        const grid = document.getElementById('nodesGrid');
+        grid.innerHTML = '';
+        havenNodes.forEach(node => {
+          const btn = document.createElement('div');
+          btn.className = "p-3 rounded-xl glass-card border border-pink-500/20 hover:border-pink-500/60 hover:bg-pink-500/20 transition cursor-pointer text-xs font-semibold text-pink-200 text-center flex items-center justify-center h-16";
+          btn.innerText = node;
+          btn.onclick = () => {
+            toggleMenuModal();
+            alert(`Navigating to ${node} node in Haven Architecture.`);
+          };
+          grid.appendChild(btn);
+        });
+      }
+    }
+
+    function handleCastingSubmit(e) {
+      e.preventDefault();
+      document.getElementById('castingSuccessMsg').classList.remove('hidden');
+    }
+
+    /* ==========================================================================
+       INITIALIZATION ON PAGE LOAD
+       ========================================================================== */
+    window.onload = function() {
+      renderQuote(0);
+      renderMovies('all');
+      renderSongs();
+      switchLegendTab('actresses');
+      renderPioneers();
+    };
+  </script>
+</body>
+</html>
